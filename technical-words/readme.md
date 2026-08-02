@@ -26,3 +26,22 @@
 | Data Migration     | Veri taşıma                           |
 | Hash Space         | Hash uzayı                            |
 | Clockwise          | Saat yönünde                          |
+
+
+
+| İngilizce          | Türkçesi                                |
+| ------------------ | --------------------------------------- |
+| Cache              | Önbellek                                |
+| Cache Hit          | Cache'te verinin bulunması              |
+| Cache Miss         | Cache'te verinin bulunamaması           |
+| Cache Aside        | Önce cache'e bak, yoksa DB'den al       |
+| Source of Truth    | Verinin gerçek kaynağı                  |
+| TTL (Time To Live) | Cache'in yaşam süresi                   |
+| Cache Invalidation | Cache'i geçersiz kılma                  |
+| Lazy Loading       | İhtiyaç olduğunda yükleme               |
+| Cache Stampede     | Aynı anda çok fazla Cache Miss oluşması |
+| Refresh Ahead      | TTL dolmadan cache'i yenileme           |
+| Lock               | Kilit                                   |
+| Stale Data         | Güncelliğini yitirmiş veri              |
+| Low Latency        | Düşük gecikme                           |
+| In-Memory Database | Bellek üzerinde çalışan veritabanı      |
