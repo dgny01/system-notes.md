@@ -45,3 +45,26 @@
 | Stale Data         | Güncelliğini yitirmiş veri              |
 | Low Latency        | Düşük gecikme                           |
 | In-Memory Database | Bellek üzerinde çalışan veritabanı      |
+
+
+| İngilizce                  | Türkçesi                         |
+| -------------------------- | -------------------------------- |
+| Event                      | Olay                             |
+| Producer                   | Mesaj gönderen                   |
+| Consumer                   | Mesaj okuyan                     |
+| Topic                      | Olay kategorisi                  |
+| Partition                  | Topic'in parçası                 |
+| Partition Key              | Partition belirleyen anahtar     |
+| Ordering                   | Sıralama                         |
+| Offset                     | Okunan mesaj konumu              |
+| Consumer Group             | Aynı servisin tüketici grubu     |
+| Broker                     | Kafka sunucusu                   |
+| Leader Partition           | Yazıları kabul eden partition    |
+| Follower Partition         | Leader'ın kopyası                |
+| Message Queue              | Mesaj kuyruğu                    |
+| Asynchronous Communication | Asenkron iletişim                |
+| Tight Coupling             | Sıkı bağımlılık                  |
+| Decoupling                 | Servisleri bağımsız hale getirme |
+| Event Streaming            | Olay akışı                       |
+| Retention                  | Mesaj saklama süresi             |
+
