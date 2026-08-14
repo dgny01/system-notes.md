@@ -1,70 +1,31 @@
-| İngilizce         | Türkçe                            |
-| ----------------- | --------------------------------- |
-| Primary           | Ana sunucu                        |
-| Replica           | Kopya sunucu                      |
-| Read Replica      | Okuma kopyası                     |
-| Replication Lag   | Replikasyon gecikmesi             |
-| Write             | Yazma                             |
-| Read              | Okuma                             |
-| High Availability | Yüksek erişilebilirlik            |
-| Failover          | Ana sunucu çökünce diğerine geçme |
-| Synchronous       | Senkron                           |
-| Asynchronous      | Asenkron                          |
+Why Kafka?
 
+Servisleri decouple etmek, event’leri asenkron işlemek ve yüksek throughput sağlamak için.
 
+Why partitions?
 
-| İngilizce          | Türkçe                                |
-| ------------------ | ------------------------------------- |
-| Consistent Hashing | Tutarlı Hashleme (özel algoritma adı) |
-| Virtual Node       | Sanal düğüm                           |
-| Hash Ring          | Hash halkası (mantıksal halka)        |
-| Multiple Positions | Birden fazla konum                    |
-| Data Distribution  | Veri dağılımı                         |
-| Load Balancing     | Yük dengeleme                         |
-| Hotspot            | Bir sunucunun aşırı yüklenmesi        |
-| Physical Server    | Fiziksel sunucu                       |
-| Data Migration     | Veri taşıma                           |
-| Hash Space         | Hash uzayı                            |
-| Clockwise          | Saat yönünde                          |
+Topic’i paralelleştirerek write/read throughput’u artırmak için.
 
+Why same key to same partition?
 
+İlişkili event’lerin ordering’ini korumak için.
 
-| İngilizce          | Türkçesi                                |
-| ------------------ | --------------------------------------- |
-| Cache              | Önbellek                                |
-| Cache Hit          | Cache'te verinin bulunması              |
-| Cache Miss         | Cache'te verinin bulunamaması           |
-| Cache Aside        | Önce cache'e bak, yoksa DB'den al       |
-| Source of Truth    | Verinin gerçek kaynağı                  |
-| TTL (Time To Live) | Cache'in yaşam süresi                   |
-| Cache Invalidation | Cache'i geçersiz kılma                  |
-| Lazy Loading       | İhtiyaç olduğunda yükleme               |
-| Cache Stampede     | Aynı anda çok fazla Cache Miss oluşması |
-| Refresh Ahead      | TTL dolmadan cache'i yenileme           |
-| Lock               | Kilit                                   |
-| Stale Data         | Güncelliğini yitirmiş veri              |
-| Low Latency        | Düşük gecikme                           |
-| In-Memory Database | Bellek üzerinde çalışan veritabanı      |
+What is a consumer group?
 
+Aynı servisin consumer kopyalarının partition’ları paylaşarak paralel tüketim yapması.
 
-| İngilizce                  | Türkçesi                         |
-| -------------------------- | -------------------------------- |
-| Event                      | Olay                             |
-| Producer                   | Mesaj gönderen                   |
-| Consumer                   | Mesaj okuyan                     |
-| Topic                      | Olay kategorisi                  |
-| Partition                  | Topic'in parçası                 |
-| Partition Key              | Partition belirleyen anahtar     |
-| Ordering                   | Sıralama                         |
-| Offset                     | Okunan mesaj konumu              |
-| Consumer Group             | Aynı servisin tüketici grubu     |
-| Broker                     | Kafka sunucusu                   |
-| Leader Partition           | Yazıları kabul eden partition    |
-| Follower Partition         | Leader'ın kopyası                |
-| Message Queue              | Mesaj kuyruğu                    |
-| Asynchronous Communication | Asenkron iletişim                |
-| Tight Coupling             | Sıkı bağımlılık                  |
-| Decoupling                 | Servisleri bağımsız hale getirme |
-| Event Streaming            | Olay akışı                       |
-| Retention                  | Mesaj saklama süresi             |
+What is an offset?
 
+Consumer group’un partition içinde hangi konuma kadar ilerlediğini gösteren konum bilgisi.
+
+What happens when a consumer crashes?
+
+Kafka rebalance yapar, partition başka consumer’a atanır ve committed offset’ten devam edilir.
+
+How do you handle duplicate events?
+
+Consumer’ı idempotent tasarlarım; unique event ID ile daha önce işlenmiş event’leri takip ederim.
+
+What is acks=all?
+
+Producer’a başarı cevabı verilmeden önce gerekli in-sync replica koşullarının sağlanmasını ister; durability yükselir ama latency artar.
