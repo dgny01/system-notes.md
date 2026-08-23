@@ -29,3 +29,7 @@ Consumer’ı idempotent tasarlarım; unique event ID ile daha önce işlenmiş 
 What is acks=all?
 
 Producer’a başarı cevabı verilmeden önce gerekli in-sync replica koşullarının sağlanmasını ister; durability yükselir ama latency artar.
+
+
+
+Low CPU doesn't mean the server has spare application capacity. Storage demand exceeds its IOPS capacity, so I would investigate I/O saturation and tasks blocked on I/O. That could also explain the high load average despite low CPU utilization.
