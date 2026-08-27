@@ -35,3 +35,6 @@ Producer’a başarı cevabı verilmeden önce gerekli in-sync replica koşullar
 Low CPU doesn't mean the server has spare application capacity. Storage demand exceeds its IOPS capacity, so I would investigate I/O saturation and tasks blocked on I/O. That could also explain the high load average despite low CPU utilization.
 
 A successful write() does not necessarily mean the data has reached persistent storage. Without an explicit durability guarantee such as fsync(), a crash may cause recently written data to be lost.
+
+
+The main symptom is a p99 latency of 2.4 seconds. Load average is 26 on an 8-core machine, so I would initially investigate whether the load comes from runnable tasks or tasks in uninterruptible I/O wait. CPU utilization is only 22%, which makes CPU saturation less likely. Meanwhile, high disk utilization, high I/O latency and a growing I/O queue strongly suggest storage saturation. Available memory is healthy, swap activity is minimal and major page faults are low, so memory pressure is also less likely. My leading hypothesis would therefore be storage saturation causing tasks to spend time waiting for I/O, potentially in D-state. The growing queue increases waiting time and particularly hurts tail requests, explaining the high p99
