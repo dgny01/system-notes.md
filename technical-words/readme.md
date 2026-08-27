@@ -33,3 +33,5 @@ Producer’a başarı cevabı verilmeden önce gerekli in-sync replica koşullar
 
 
 Low CPU doesn't mean the server has spare application capacity. Storage demand exceeds its IOPS capacity, so I would investigate I/O saturation and tasks blocked on I/O. That could also explain the high load average despite low CPU utilization.
+
+A successful write() does not necessarily mean the data has reached persistent storage. Without an explicit durability guarantee such as fsync(), a crash may cause recently written data to be lost.
