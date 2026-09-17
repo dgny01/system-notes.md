@@ -49,3 +49,6 @@ You said you reproduced the interference. How did you make sure that the slowdow
 For both conditions, I used the same load generator configuration: twenty seconds with a concurrency of four. The important point was to keep the workload parameters the same and mainly change whether the aggressor was active.
 
 I repeated this experiment five times. All five runs showed the same general direction: latency increased and completed requests decreased when the aggressor was active. So the result was repeatable rather than just a single observation.
+
+“Five runs showed the same direction, so it wasn't random.”
+This reduced the likelihood that I was looking at a one-off fluctuation, although five runs are still limited and I haven't done a full statistical analysis.
