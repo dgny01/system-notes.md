@@ -52,3 +52,11 @@ I repeated this experiment five times. All five runs showed the same general dir
 
 “Five runs showed the same direction, so it wasn't random.”
 This reduced the likelihood that I was looking at a one-off fluctuation, although five runs are still limited and I haven't done a full statistical analysis.
+
+Okay. Your benchmark shows roughly 29% higher mean latency and 23% fewer completed requests. But Docker showed that the victim was still using around 104% CPU and around 40 MiB of memory. Why isn't docker stats enough to diagnose the problem? Why did you need perf?
+
+---Docker stats wasn't enough because it mainly showed me resource utilization. The victim was still using around the same CPU and memory, even though its performance was worse.
+
+So I needed to look deeper into how the CPU was executing the workload. I used perf to measure task-clock, cycles and instructions, and I calculated IPC. I also looked at effective CPU frequency.
+
+This helped me see that the victim was getting roughly the same CPU time, but its frequency and IPC were lower during interference. It still didn't tell me the exact root cause, but it gave me more information than CPU and memory utilization alone.
